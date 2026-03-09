@@ -1,0 +1,71 @@
+.pitch-list-page {
+  padding-bottom: 60px;
+}
+
+.pitch-filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.pitch-filters input {
+  max-width: 280px;
+}
+
+.pitch-filters select {
+  max-width: 180px;
+}
+
+.pitch-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.pagination-info {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-secondary);
+}
+
+.empty-state h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+@media (max-width: 1024px) {
+  .pitch-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .pitch-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pitch-filters {
+    flex-direction: column;
+  }
+
+  .pitch-filters input,
+  .pitch-filters select {
+    max-width: 100%;
+  }
+}

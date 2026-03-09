@@ -1,0 +1,18 @@
+.pitch-form-page {
+  padding-bottom: 60px;
+}
+
+.pitch-form-card {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.budget-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.budget-fields .form-group {
+  margin-bottom: 0;
+}

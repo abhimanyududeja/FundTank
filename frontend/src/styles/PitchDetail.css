@@ -1,0 +1,162 @@
+.pitch-detail {
+  padding-bottom: 60px;
+}
+
+.pitch-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.pitch-detail-info h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.pitch-detail-meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.pitch-detail-meta span {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.pitch-detail-actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.pitch-detail-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+.pitch-description {
+  line-height: 1.8;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  white-space: pre-wrap;
+}
+
+.pitch-section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.budget-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.budget-item:last-child {
+  border-bottom: none;
+}
+
+.budget-item-label {
+  color: var(--text-secondary);
+  text-transform: capitalize;
+}
+
+.budget-item-value {
+  font-family: var(--font-mono);
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+.vote-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.vote-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.vote-btn-fund {
+  background: var(--accent-green-dim);
+  color: var(--accent-green);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+.vote-btn-fund:hover {
+  background: rgba(52, 211, 153, 0.25);
+}
+
+.vote-btn-pass {
+  background: rgba(248, 113, 113, 0.1);
+  color: var(--accent-red);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.vote-btn-pass:hover {
+  background: rgba(248, 113, 113, 0.2);
+}
+
+.invest-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-stat:last-child {
+  border-bottom: none;
+}
+
+.sidebar-stat-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.sidebar-stat-value {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.voted-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 16px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .pitch-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pitch-detail-header {
+    flex-direction: column;
+  }
+}
