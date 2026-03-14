@@ -39,9 +39,7 @@ function Register({ onLogin }) {
     <div className="auth-page">
       <div className="card auth-card fade-in" style={{ maxWidth: "500px" }}>
         <h1>Join FundTank</h1>
-        <p className="auth-subtitle">
-          Start with $100,000 virtual capital to invest
-        </p>
+        <p className="auth-subtitle">Start with $100,000 virtual capital to invest</p>
 
         {error && <div className="form-error">{error}</div>}
 

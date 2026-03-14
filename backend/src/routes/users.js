@@ -32,10 +32,7 @@ router.get("/:id", async (req, res) => {
     }
     const user = await db
       .collection("users")
-      .findOne(
-        { _id: new ObjectId(req.params.id) },
-        { projection: { password: 0 } }
-      );
+      .findOne({ _id: new ObjectId(req.params.id) }, { projection: { password: 0 } });
     if (!user) return res.status(404).json({ error: "User not found" });
     res.json(user);
   } catch (error) {
@@ -57,17 +54,11 @@ router.put("/profile", authMiddleware, async (req, res) => {
 
     await db
       .collection("users")
-      .updateOne(
-        { _id: new ObjectId(req.user.userId) },
-        { $set: updates }
-      );
+      .updateOne({ _id: new ObjectId(req.user.userId) }, { $set: updates });
 
     const user = await db
       .collection("users")
-      .findOne(
-        { _id: new ObjectId(req.user.userId) },
-        { projection: { password: 0 } }
-      );
+      .findOne({ _id: new ObjectId(req.user.userId) }, { projection: { password: 0 } });
     res.json(user);
   } catch (error) {
     console.error("Update profile error:", error);

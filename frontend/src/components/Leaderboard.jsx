@@ -67,33 +67,31 @@ function Leaderboard() {
                   const approval =
                     pitch.fundVotes + pitch.passVotes > 0
                       ? (
-                          (pitch.fundVotes /
-                            (pitch.fundVotes + pitch.passVotes)) *
+                          (pitch.fundVotes / (pitch.fundVotes + pitch.passVotes)) *
                           100
                         ).toFixed(0)
                       : 0;
                   return (
                     <tr key={pitch._id}>
-                      <td className={`rank-cell ${i < 3 ? "top-3" : ""}`}>
-                        #{i + 1}
-                      </td>
+                      <td className={`rank-cell ${i < 3 ? "top-3" : ""}`}>#{i + 1}</td>
                       <td>
-                        <Link
-                          to={`/pitches/${pitch._id}`}
-                          className="leader-name"
-                        >
+                        <Link to={`/pitches/${pitch._id}`} className="leader-name">
                           {pitch.name}
                         </Link>
                       </td>
                       <td>
-                        <span className="badge badge-cyan">
-                          {pitch.category}
-                        </span>
+                        <span className="badge badge-cyan">{pitch.category}</span>
                       </td>
-                      <td className="leader-value" style={{ color: "var(--accent-cyan)" }}>
+                      <td
+                        className="leader-value"
+                        style={{ color: "var(--accent-cyan)" }}
+                      >
                         ${pitch.totalFunding.toLocaleString()}
                       </td>
-                      <td className="leader-value" style={{ color: "var(--accent-green)" }}>
+                      <td
+                        className="leader-value"
+                        style={{ color: "var(--accent-green)" }}
+                      >
                         {pitch.fundVotes}
                       </td>
                       <td className="leader-value">{approval}%</td>
@@ -119,14 +117,9 @@ function Leaderboard() {
               <tbody>
                 {investors.map((inv, i) => (
                   <tr key={inv._id}>
-                    <td className={`rank-cell ${i < 3 ? "top-3" : ""}`}>
-                      #{i + 1}
-                    </td>
+                    <td className={`rank-cell ${i < 3 ? "top-3" : ""}`}>#{i + 1}</td>
                     <td>
-                      <Link
-                        to={`/users/${inv._id}`}
-                        className="leader-name"
-                      >
+                      <Link to={`/users/${inv._id}`} className="leader-name">
                         {inv.displayName}
                       </Link>
                     </td>
@@ -152,8 +145,8 @@ function Leaderboard() {
                           inv.riskPreference === "aggressive"
                             ? "badge-pink"
                             : inv.riskPreference === "moderate"
-                            ? "badge-amber"
-                            : "badge-green"
+                              ? "badge-amber"
+                              : "badge-green"
                         }`}
                       >
                         {inv.riskPreference}

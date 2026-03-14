@@ -19,10 +19,7 @@ const CATEGORY_COLORS = {
 
 function PitchCard({ pitch, rank }) {
   const navigate = useNavigate();
-  const progress = Math.min(
-    (pitch.totalFunding / pitch.fundingGoal) * 100,
-    100
-  );
+  const progress = Math.min((pitch.totalFunding / pitch.fundingGoal) * 100, 100);
   const colorClass = CATEGORY_COLORS[pitch.category] || "cyan";
 
   return (
@@ -40,9 +37,7 @@ function PitchCard({ pitch, rank }) {
         {pitch.category}
       </span>
       <h3>{pitch.name}</h3>
-      <p className="pitch-card-tagline">
-        {pitch.tagline || pitch.description}
-      </p>
+      <p className="pitch-card-tagline">{pitch.tagline || pitch.description}</p>
 
       <div className="pitch-card-stats">
         <div className="pitch-card-stat">

@@ -38,16 +38,56 @@ const STRATEGIES = [
 ];
 
 const PITCH_NAMES = [
-  "QuickPay", "MedLink", "EduFlow", "GreenGrid", "DataMinds",
-  "CloudSync", "ShopWave", "BuzzFeed", "GameForge", "FreshBite",
-  "LogiTrack", "PropTech", "AgroBot", "CodeNest", "PayBridge",
-  "HealthPal", "LearnHub", "EcoVolt", "NeuralNet", "SaaSly",
-  "CartGenius", "SocialPulse", "PlayVerse", "MealPrep", "RouteOpt",
-  "HomeBase", "CropAI", "DevStack", "WalletGuard", "TeleDoc",
-  "SkillForge", "SolarFlow", "DeepSight", "CloudOps", "MarketMesh",
-  "VoiceHive", "QuestRealm", "FoodLoop", "FleetSync", "RentEase",
-  "FarmTech", "BuildKit", "CashFlow", "DocStream", "TutorBot",
-  "WindPower", "BrainWave", "StackOps", "TradeHub", "VibeCheck",
+  "QuickPay",
+  "MedLink",
+  "EduFlow",
+  "GreenGrid",
+  "DataMinds",
+  "CloudSync",
+  "ShopWave",
+  "BuzzFeed",
+  "GameForge",
+  "FreshBite",
+  "LogiTrack",
+  "PropTech",
+  "AgroBot",
+  "CodeNest",
+  "PayBridge",
+  "HealthPal",
+  "LearnHub",
+  "EcoVolt",
+  "NeuralNet",
+  "SaaSly",
+  "CartGenius",
+  "SocialPulse",
+  "PlayVerse",
+  "MealPrep",
+  "RouteOpt",
+  "HomeBase",
+  "CropAI",
+  "DevStack",
+  "WalletGuard",
+  "TeleDoc",
+  "SkillForge",
+  "SolarFlow",
+  "DeepSight",
+  "CloudOps",
+  "MarketMesh",
+  "VoiceHive",
+  "QuestRealm",
+  "FoodLoop",
+  "FleetSync",
+  "RentEase",
+  "FarmTech",
+  "BuildKit",
+  "CashFlow",
+  "DocStream",
+  "TutorBot",
+  "WindPower",
+  "BrainWave",
+  "StackOps",
+  "TradeHub",
+  "VibeCheck",
 ];
 
 const DESCRIPTIONS = [
@@ -87,22 +127,99 @@ const TAGLINES = [
 ];
 
 const FIRST_NAMES = [
-  "Alex", "Jordan", "Morgan", "Taylor", "Casey", "Riley", "Avery",
-  "Quinn", "Skyler", "Drew", "Charlie", "Dakota", "Emery", "Finley",
-  "Hayden", "Jamie", "Kai", "Logan", "Micah", "Nico", "Oakley",
-  "Parker", "Reese", "Sage", "Tatum", "Blake", "Cameron", "Devon",
-  "Ellis", "Frankie", "Gray", "Harper", "Indigo", "Jules", "Kendall",
-  "Lane", "Marley", "Noel", "Onyx", "Peyton", "Remy", "Shiloh",
-  "Toby", "Val", "Wren", "Zion", "Addison", "Bailey", "Corey", "Dana",
+  "Alex",
+  "Jordan",
+  "Morgan",
+  "Taylor",
+  "Casey",
+  "Riley",
+  "Avery",
+  "Quinn",
+  "Skyler",
+  "Drew",
+  "Charlie",
+  "Dakota",
+  "Emery",
+  "Finley",
+  "Hayden",
+  "Jamie",
+  "Kai",
+  "Logan",
+  "Micah",
+  "Nico",
+  "Oakley",
+  "Parker",
+  "Reese",
+  "Sage",
+  "Tatum",
+  "Blake",
+  "Cameron",
+  "Devon",
+  "Ellis",
+  "Frankie",
+  "Gray",
+  "Harper",
+  "Indigo",
+  "Jules",
+  "Kendall",
+  "Lane",
+  "Marley",
+  "Noel",
+  "Onyx",
+  "Peyton",
+  "Remy",
+  "Shiloh",
+  "Toby",
+  "Val",
+  "Wren",
+  "Zion",
+  "Addison",
+  "Bailey",
+  "Corey",
+  "Dana",
 ];
 
 const LAST_NAMES = [
-  "Chen", "Patel", "Garcia", "Kim", "Thompson", "Nakamura", "Singh",
-  "Mueller", "Santos", "Anderson", "Okafor", "Johansson", "Ibrahim",
-  "Petrov", "Williams", "Tanaka", "Sharma", "Costa", "Nguyen", "Park",
-  "Ali", "Jensen", "Kovac", "Moreau", "Fischer", "Lopez", "Suzuki",
-  "Rao", "Silva", "Brown", "Sato", "Kumar", "Oliveira", "Lee",
-  "Hansen", "Ivanov", "Hernandez", "Yamamoto", "Gupta", "Eriksson",
+  "Chen",
+  "Patel",
+  "Garcia",
+  "Kim",
+  "Thompson",
+  "Nakamura",
+  "Singh",
+  "Mueller",
+  "Santos",
+  "Anderson",
+  "Okafor",
+  "Johansson",
+  "Ibrahim",
+  "Petrov",
+  "Williams",
+  "Tanaka",
+  "Sharma",
+  "Costa",
+  "Nguyen",
+  "Park",
+  "Ali",
+  "Jensen",
+  "Kovac",
+  "Moreau",
+  "Fischer",
+  "Lopez",
+  "Suzuki",
+  "Rao",
+  "Silva",
+  "Brown",
+  "Sato",
+  "Kumar",
+  "Oliveira",
+  "Lee",
+  "Hansen",
+  "Ivanov",
+  "Hernandez",
+  "Yamamoto",
+  "Gupta",
+  "Eriksson",
 ];
 
 const COMMENTS = [
@@ -180,9 +297,7 @@ async function seed() {
         totalInvested: 0,
         totalReturns: randomBetween(0, 50000),
         successfulPicks: randomBetween(0, 15),
-        createdAt: new Date(
-          Date.now() - randomBetween(1, 90) * 24 * 60 * 60 * 1000
-        ),
+        createdAt: new Date(Date.now() - randomBetween(1, 90) * 24 * 60 * 60 * 1000),
         updatedAt: new Date(),
       };
       users.push(user);
@@ -203,7 +318,10 @@ async function seed() {
       const baseName = PITCH_NAMES[i % PITCH_NAMES.length];
       const pitch = {
         _id: new ObjectId(),
-        name: i < PITCH_NAMES.length ? baseName : `${baseName} ${Math.ceil((i + 1) / PITCH_NAMES.length)}`,
+        name:
+          i < PITCH_NAMES.length
+            ? baseName
+            : `${baseName} ${Math.ceil((i + 1) / PITCH_NAMES.length)}`,
         description: randomItem(DESCRIPTIONS),
         tagline: randomItem(TAGLINES),
         category: randomItem(CATEGORIES),
@@ -216,9 +334,7 @@ async function seed() {
         authorId: author._id,
         authorName: author.displayName,
         status: Math.random() > 0.1 ? "active" : "funded",
-        createdAt: new Date(
-          Date.now() - randomBetween(1, 60) * 24 * 60 * 60 * 1000
-        ),
+        createdAt: new Date(Date.now() - randomBetween(1, 60) * 24 * 60 * 60 * 1000),
         updatedAt: new Date(),
       };
 
@@ -230,9 +346,7 @@ async function seed() {
           pitch.voters.push({
             userId: shuffledUsers[v]._id,
             vote: Math.random() > 0.3 ? "fund" : "pass",
-            votedAt: new Date(
-              Date.now() - randomBetween(0, 30) * 24 * 60 * 60 * 1000
-            ),
+            votedAt: new Date(Date.now() - randomBetween(0, 30) * 24 * 60 * 60 * 1000),
           });
         }
       }
@@ -294,9 +408,7 @@ async function seed() {
         returnMultiplier: parseFloat(returnMultiplier.toFixed(2)),
         estimatedReturn: parseFloat((amount * returnMultiplier).toFixed(2)),
         status: "active",
-        createdAt: new Date(
-          Date.now() - randomBetween(0, 45) * 24 * 60 * 60 * 1000
-        ),
+        createdAt: new Date(Date.now() - randomBetween(0, 45) * 24 * 60 * 60 * 1000),
         updatedAt: new Date(),
       });
     }
@@ -310,13 +422,8 @@ async function seed() {
       const userInvs = investments.filter(
         (inv) => inv.investorId.toString() === user._id.toString()
       );
-      const totalReturns = userInvs.reduce(
-        (sum, inv) => sum + inv.estimatedReturn,
-        0
-      );
-      const successfulPicks = userInvs.filter(
-        (inv) => inv.returnMultiplier > 1.3
-      ).length;
+      const totalReturns = userInvs.reduce((sum, inv) => sum + inv.estimatedReturn, 0);
+      const successfulPicks = userInvs.filter((inv) => inv.returnMultiplier > 1.3).length;
       await db.collection("users").updateOne(
         { _id: user._id },
         {
@@ -332,10 +439,9 @@ async function seed() {
     // Update pitch totalFunding based on actual investments
     for (const pitch of pitches) {
       const actualFunding = pitchFundingActual[pitch._id.toString()] || 0;
-      await db.collection("pitches").updateOne(
-        { _id: pitch._id },
-        { $set: { totalFunding: actualFunding } }
-      );
+      await db
+        .collection("pitches")
+        .updateOne({ _id: pitch._id }, { $set: { totalFunding: actualFunding } });
     }
 
     // Create comments/Q&A (150+ comments across pitches)
@@ -392,18 +498,14 @@ async function seed() {
         text: randomItem(QUESTIONS),
         parentId: null,
         isAuthorReply: false,
-        createdAt: new Date(
-          Date.now() - randomBetween(0, 30) * 24 * 60 * 60 * 1000
-        ),
+        createdAt: new Date(Date.now() - randomBetween(0, 30) * 24 * 60 * 60 * 1000),
         updatedAt: new Date(),
       };
       comments.push(comment);
 
       // 60% chance the pitch author replies
       if (Math.random() > 0.4) {
-        const author = users.find(
-          (u) => u._id.toString() === pitch.authorId.toString()
-        );
+        const author = users.find((u) => u._id.toString() === pitch.authorId.toString());
         if (author) {
           comments.push({
             _id: new ObjectId(),
@@ -414,9 +516,7 @@ async function seed() {
             text: randomItem(REPLIES),
             parentId: comment._id,
             isAuthorReply: true,
-            createdAt: new Date(
-              Date.now() - randomBetween(0, 25) * 24 * 60 * 60 * 1000
-            ),
+            createdAt: new Date(Date.now() - randomBetween(0, 25) * 24 * 60 * 60 * 1000),
             updatedAt: new Date(),
           });
         }
@@ -446,7 +546,9 @@ async function seed() {
     await db.collection("comments").createIndex({ authorId: 1 });
     console.log("Created indexes");
 
-    console.log("\nSeed complete! Test login: email=alex.chen0@example.com password=password123");
+    console.log(
+      "\nSeed complete! Test login: email=alex.chen0@example.com password=password123"
+    );
   } catch (error) {
     console.error("Seed error:", error);
   } finally {

@@ -58,8 +58,8 @@ function Profile({ user, setUser }) {
                     user.riskPreference === "aggressive"
                       ? "badge-pink"
                       : user.riskPreference === "moderate"
-                      ? "badge-amber"
-                      : "badge-green"
+                        ? "badge-amber"
+                        : "badge-green"
                   }`}
                 >
                   {user.riskPreference}
@@ -75,13 +75,19 @@ function Profile({ user, setUser }) {
             <div>
               <div className="sidebar-stat">
                 <span className="sidebar-stat-label">Total Budget</span>
-                <span className="sidebar-stat-value" style={{ color: "var(--accent-cyan)" }}>
+                <span
+                  className="sidebar-stat-value"
+                  style={{ color: "var(--accent-cyan)" }}
+                >
                   ${user.budget.toLocaleString()}
                 </span>
               </div>
               <div className="sidebar-stat">
                 <span className="sidebar-stat-label">Total Invested</span>
-                <span className="sidebar-stat-value" style={{ color: "var(--accent-pink)" }}>
+                <span
+                  className="sidebar-stat-value"
+                  style={{ color: "var(--accent-pink)" }}
+                >
                   ${user.totalInvested.toLocaleString()}
                 </span>
               </div>
@@ -89,15 +95,16 @@ function Profile({ user, setUser }) {
             <div>
               <div className="sidebar-stat">
                 <span className="sidebar-stat-label">Total Returns</span>
-                <span className="sidebar-stat-value" style={{ color: "var(--accent-green)" }}>
+                <span
+                  className="sidebar-stat-value"
+                  style={{ color: "var(--accent-green)" }}
+                >
                   ${user.totalReturns.toLocaleString()}
                 </span>
               </div>
               <div className="sidebar-stat">
                 <span className="sidebar-stat-label">Successful Picks</span>
-                <span className="sidebar-stat-value">
-                  {user.successfulPicks}
-                </span>
+                <span className="sidebar-stat-value">{user.successfulPicks}</span>
               </div>
             </div>
           </div>
@@ -110,9 +117,7 @@ function Profile({ user, setUser }) {
               >
                 Investment Strategy
               </div>
-              <p style={{ color: "var(--text-secondary)" }}>
-                {user.strategy}
-              </p>
+              <p style={{ color: "var(--text-secondary)" }}>{user.strategy}</p>
             </div>
           )}
 
@@ -166,11 +171,7 @@ function Profile({ user, setUser }) {
                 </select>
               </div>
 
-              <button
-                type="submit"
-                className="btn btn-primary"
-                disabled={saving}
-              >
+              <button type="submit" className="btn btn-primary" disabled={saving}>
                 {saving ? "Saving..." : "Save Changes"}
               </button>
             </form>

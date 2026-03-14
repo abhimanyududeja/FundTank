@@ -1,40 +1,62 @@
+import globals from "globals";
 import js from "@eslint/js";
-import reactPlugin from "eslint-plugin-react";
-import reactHooksPlugin from "eslint-plugin-react-hooks";
-
+import eslintConfigPrettier from "eslint-config-prettier";
+import prettier from "eslint-plugin-prettier";
+import react from "eslint-plugin-react";
+import reactHooks from "eslint-plugin-react-hooks";
 export default [
-  js.configs.recommended,
   {
-    files: ["**/*.{js,jsx}"],
-    plugins: {
-      react: reactPlugin,
-      "react-hooks": reactHooksPlugin,
-    },
+    files: ["**/*.{js,jsx,mjs,cjs,ts,tsx}"],
     languageOptions: {
-      ecmaVersion: 2022,
+      ecmaVersion: "latest",
       sourceType: "module",
       parserOptions: {
-        ecmaFeatures: { jsx: true },
+        ecmaFeatures: {
+          jsx: true,
+        },
       },
       globals: {
-        window: "readonly",
-        document: "readonly",
-        localStorage: "readonly",
-        console: "readonly",
-        fetch: "readonly",
-        URLSearchParams: "readonly",
-        Promise: "readonly",
-        setTimeout: "readonly",
+        ...globals.browser,
+        ...globals.node,
+        ...globals.es2025,
       },
+    },
+    plugins: {
+      prettier: prettier,
+      react: react,
+      "react-hooks": reactHooks,
     },
     settings: {
       react: { version: "detect" },
     },
     rules: {
+      ...js.configs.recommended.rules,
+      indent: [
+        "error",
+        2,
+        {
+          SwitchCase: 1,
+        },
+      ],
+      "linebreak-style": ["error", "unix"],
+      quotes: ["error", "double"],
+      semi: ["error", "always"],
+      "no-console": 0,
+      "no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
       "react/prop-types": "warn",
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
-      "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+      "react/jsx-uses-react": "error",
+      "react/jsx-uses-vars": "error",
+      "prettier/prettier": [
+        "error",
+        {
+          endOfLine: "lf",
+          trailingComma: "es5",
+          singleQuote: false,
+        },
+      ],
     },
   },
+  eslintConfigPrettier,
 ];

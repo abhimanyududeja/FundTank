@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { ObjectId } from "mongodb";
 import { getDB } from "../db/connection.js";
-import { authMiddleware, optionalAuth } from "../middleware/auth.js";
+import { authMiddleware } from "../middleware/auth.js";
 
 const router = Router();
 
@@ -18,9 +18,7 @@ router.get("/", authMiddleware, async (req, res) => {
     // Enrich with pitch data
     const enriched = await Promise.all(
       investments.map(async (inv) => {
-        const pitch = await db
-          .collection("pitches")
-          .findOne({ _id: inv.pitchId });
+        const pitch = await db.collection("pitches").findOne({ _id: inv.pitchId });
         return { ...inv, pitch: pitch || { name: "Deleted Pitch", status: "deleted" } };
       })
     );
@@ -47,9 +45,7 @@ router.get("/user/:userId", async (req, res) => {
 
     const enriched = await Promise.all(
       investments.map(async (inv) => {
-        const pitch = await db
-          .collection("pitches")
-          .findOne({ _id: inv.pitchId });
+        const pitch = await db.collection("pitches").findOne({ _id: inv.pitchId });
         return { ...inv, pitch: pitch || { name: "Deleted Pitch", status: "deleted" } };
       })
     );
@@ -71,8 +67,7 @@ router.get("/:id", async (req, res) => {
     const investment = await db
       .collection("investments")
       .findOne({ _id: new ObjectId(req.params.id) });
-    if (!investment)
-      return res.status(404).json({ error: "Investment not found" });
+    if (!investment) return res.status(404).json({ error: "Investment not found" });
     res.json(investment);
   } catch (error) {
     console.error("Get investment error:", error);
@@ -99,9 +94,7 @@ router.post("/", authMiddleware, async (req, res) => {
     }
 
     // Check pitch exists and is active
-    const pitch = await db
-      .collection("pitches")
-      .findOne({ _id: new ObjectId(pitchId) });
+    const pitch = await db.collection("pitches").findOne({ _id: new ObjectId(pitchId) });
     if (!pitch) return res.status(404).json({ error: "Pitch not found" });
     if (pitch.status !== "active") {
       return res.status(400).json({ error: "Pitch is not accepting investments" });
@@ -118,9 +111,9 @@ router.post("/", authMiddleware, async (req, res) => {
       .findOne({ _id: new ObjectId(req.user.userId) });
     const availableBudget = user.budget - user.totalInvested;
     if (investAmount > availableBudget) {
-      return res
-        .status(400)
-        .json({ error: `Insufficient budget. Available: $${availableBudget.toLocaleString()}` });
+      return res.status(400).json({
+        error: `Insufficient budget. Available: $${availableBudget.toLocaleString()}`,
+      });
     }
 
     // Calculate returns based on pitch performance
@@ -180,8 +173,7 @@ router.put("/:id", authMiddleware, async (req, res) => {
     const investment = await db
       .collection("investments")
       .findOne({ _id: new ObjectId(req.params.id) });
-    if (!investment)
-      return res.status(404).json({ error: "Investment not found" });
+    if (!investment) return res.status(404).json({ error: "Investment not found" });
     if (investment.investorId.toString() !== req.user.userId.toString()) {
       return res.status(403).json({ error: "Not authorized" });
     }
@@ -217,10 +209,7 @@ router.put("/:id", authMiddleware, async (req, res) => {
         );
       await db
         .collection("pitches")
-        .updateOne(
-          { _id: investment.pitchId },
-          { $inc: { totalFunding: diff } }
-        );
+        .updateOne({ _id: investment.pitchId }, { $inc: { totalFunding: diff } });
     }
 
     await db
@@ -247,8 +236,7 @@ router.delete("/:id", authMiddleware, async (req, res) => {
     const investment = await db
       .collection("investments")
       .findOne({ _id: new ObjectId(req.params.id) });
-    if (!investment)
-      return res.status(404).json({ error: "Investment not found" });
+    if (!investment) return res.status(404).json({ error: "Investment not found" });
     if (investment.investorId.toString() !== req.user.userId.toString()) {
       return res.status(403).json({ error: "Not authorized" });
     }
@@ -269,9 +257,7 @@ router.delete("/:id", authMiddleware, async (req, res) => {
         { $inc: { totalFunding: -investment.amount } }
       );
 
-    await db
-      .collection("investments")
-      .deleteOne({ _id: new ObjectId(req.params.id) });
+    await db.collection("investments").deleteOne({ _id: new ObjectId(req.params.id) });
 
     res.json({ message: "Investment withdrawn successfully" });
   } catch (error) {
@@ -296,9 +282,7 @@ router.get("/analytics/summary", authMiddleware, async (req, res) => {
     );
     const categoryBreakdown = {};
     for (const inv of investments) {
-      const pitch = await db
-        .collection("pitches")
-        .findOne({ _id: inv.pitchId });
+      const pitch = await db.collection("pitches").findOne({ _id: inv.pitchId });
       if (pitch) {
         const cat = pitch.category || "Other";
         categoryBreakdown[cat] = (categoryBreakdown[cat] || 0) + inv.amount;

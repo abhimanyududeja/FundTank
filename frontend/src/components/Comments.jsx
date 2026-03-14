@@ -16,7 +16,7 @@ function Comments({ pitchId, user }) {
 
   useEffect(() => {
     loadComments();
-  }, [pitchId]);
+  }, [pitchId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   async function loadComments() {
     try {
@@ -81,9 +81,7 @@ function Comments({ pitchId, user }) {
   const replies = comments.filter((c) => c.parentId);
 
   function getReplies(parentId) {
-    return replies.filter(
-      (r) => r.parentId.toString() === parentId.toString()
-    );
+    return replies.filter((r) => r.parentId.toString() === parentId.toString());
   }
 
   function formatDate(dateStr) {
@@ -129,7 +127,9 @@ function Comments({ pitchId, user }) {
       )}
 
       {!user && (
-        <p style={{ color: "var(--text-muted)", marginBottom: "20px", fontSize: "0.9rem" }}>
+        <p
+          style={{ color: "var(--text-muted)", marginBottom: "20px", fontSize: "0.9rem" }}
+        >
           <Link to="/login">Sign in</Link> to ask questions or comment.
         </p>
       )}
@@ -157,9 +157,7 @@ function Comments({ pitchId, user }) {
                       <span className="comment-author-badge">Author</span>
                     )}
                   </div>
-                  <span className="comment-date">
-                    {formatDate(comment.createdAt)}
-                  </span>
+                  <span className="comment-date">{formatDate(comment.createdAt)}</span>
                 </div>
 
                 {editingId === comment._id ? (
@@ -193,9 +191,7 @@ function Comments({ pitchId, user }) {
                     <button
                       className="comment-action-btn"
                       onClick={() => {
-                        setReplyingTo(
-                          replyingTo === comment._id ? null : comment._id
-                        );
+                        setReplyingTo(replyingTo === comment._id ? null : comment._id);
                         setReplyText("");
                       }}
                     >
@@ -256,9 +252,7 @@ function Comments({ pitchId, user }) {
                         <span className="comment-author-badge">Author</span>
                       )}
                     </div>
-                    <span className="comment-date">
-                      {formatDate(reply.createdAt)}
-                    </span>
+                    <span className="comment-date">{formatDate(reply.createdAt)}</span>
                   </div>
 
                   {editingId === reply._id ? (

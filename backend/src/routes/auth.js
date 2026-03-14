@@ -12,8 +12,7 @@ const STARTING_BUDGET = 100000;
 router.post("/register", async (req, res) => {
   try {
     const db = getDB();
-    const { username, email, password, displayName, strategy, riskPreference } =
-      req.body;
+    const { username, email, password, displayName, strategy, riskPreference } = req.body;
 
     if (!username || !email || !password || !displayName) {
       return res.status(400).json({ error: "All fields are required" });
@@ -23,9 +22,7 @@ router.post("/register", async (req, res) => {
       .collection("users")
       .findOne({ $or: [{ email }, { username }] });
     if (existing) {
-      return res
-        .status(409)
-        .json({ error: "Username or email already exists" });
+      return res.status(409).json({ error: "Username or email already exists" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -51,7 +48,7 @@ router.post("/register", async (req, res) => {
       { expiresIn: "7d" }
     );
 
-    const { password: _, ...safeUser } = user;
+    const { password: _pw, ...safeUser } = user;
     res.status(201).json({ token, user: { ...safeUser, _id: result.insertedId } });
   } catch (error) {
     console.error("Register error:", error);
@@ -89,7 +86,7 @@ router.post("/login", async (req, res) => {
       { expiresIn: "7d" }
     );
 
-    const { password: _, ...safeUser } = user;
+    const { password: _pw, ...safeUser } = user;
     res.json({ token, user: safeUser });
   } catch (error) {
     console.error("Login error:", error);
@@ -112,7 +109,7 @@ router.get("/me", async (req, res) => {
       .findOne({ _id: new ObjectId(decoded.userId) });
     if (!user) return res.status(404).json({ error: "User not found" });
 
-    const { password: _, ...safeUser } = user;
+    const { password: _pw, ...safeUser } = user;
     res.json({ user: safeUser });
   } catch {
     res.status(401).json({ error: "Invalid token" });

@@ -26,8 +26,7 @@ const api = {
   // Auth
   register: (body) =>
     request("/auth/register", { method: "POST", body: JSON.stringify(body) }),
-  login: (body) =>
-    request("/auth/login", { method: "POST", body: JSON.stringify(body) }),
+  login: (body) => request("/auth/login", { method: "POST", body: JSON.stringify(body) }),
   getMe: () => request("/auth/me"),
 
   // Pitches
@@ -40,8 +39,7 @@ const api = {
     request("/pitches", { method: "POST", body: JSON.stringify(body) }),
   updatePitch: (id, body) =>
     request(`/pitches/${id}`, { method: "PUT", body: JSON.stringify(body) }),
-  deletePitch: (id) =>
-    request(`/pitches/${id}`, { method: "DELETE" }),
+  deletePitch: (id) => request(`/pitches/${id}`, { method: "DELETE" }),
   votePitch: (id, vote) =>
     request(`/pitches/${id}/vote`, {
       method: "POST",
@@ -60,8 +58,7 @@ const api = {
       method: "PUT",
       body: JSON.stringify(body),
     }),
-  deleteInvestment: (id) =>
-    request(`/investments/${id}`, { method: "DELETE" }),
+  deleteInvestment: (id) => request(`/investments/${id}`, { method: "DELETE" }),
   getAnalytics: () => request("/investments/analytics/summary"),
 
   // Users
@@ -76,8 +73,7 @@ const api = {
     request("/comments", { method: "POST", body: JSON.stringify(body) }),
   updateComment: (id, body) =>
     request(`/comments/${id}`, { method: "PUT", body: JSON.stringify(body) }),
-  deleteComment: (id) =>
-    request(`/comments/${id}`, { method: "DELETE" }),
+  deleteComment: (id) => request(`/comments/${id}`, { method: "DELETE" }),
 };
 
 export default api;

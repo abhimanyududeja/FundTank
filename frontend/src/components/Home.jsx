@@ -52,8 +52,8 @@ function Home({ user }) {
             <span className="gradient-text">Dominate the Tank.</span>
           </h1>
           <p className="hero-subtitle">
-            Create startup pitches, allocate virtual capital, compete on
-            leaderboards. Like Shark Tank meets a stock market simulation.
+            Create startup pitches, allocate virtual capital, compete on leaderboards.
+            Like Shark Tank meets a stock market simulation.
           </p>
           <div className="hero-actions">
             {user ? (
@@ -86,26 +86,15 @@ function Home({ user }) {
               <div className="stat-value">{stats.pitches}</div>
               <div className="stat-label">Active Pitches</div>
             </div>
-            <div
-              className="card stat-card fade-in"
-              style={{ animationDelay: "0.1s" }}
-            >
+            <div className="card stat-card fade-in" style={{ animationDelay: "0.1s" }}>
               <div className="stat-value">{stats.investors}</div>
               <div className="stat-label">Investors</div>
             </div>
-            <div
-              className="card stat-card fade-in"
-              style={{ animationDelay: "0.2s" }}
-            >
-              <div className="stat-value">
-                ${(stats.totalFunding / 1000).toFixed(0)}K
-              </div>
+            <div className="card stat-card fade-in" style={{ animationDelay: "0.2s" }}>
+              <div className="stat-value">${(stats.totalFunding / 1000).toFixed(0)}K</div>
               <div className="stat-label">Total Funded</div>
             </div>
-            <div
-              className="card stat-card fade-in"
-              style={{ animationDelay: "0.3s" }}
-            >
+            <div className="card stat-card fade-in" style={{ animationDelay: "0.3s" }}>
               <div className="stat-value">{stats.investments}</div>
               <div className="stat-label">Investments Made</div>
             </div>

@@ -75,53 +75,40 @@ function App() {
           <Route path="/" element={<Home user={user} />} />
           <Route
             path="/login"
-            element={
-              user ? (
-                <Navigate to="/" />
-              ) : (
-                <Login onLogin={handleLogin} />
-              )
-            }
+            element={user ? <Navigate to="/" /> : <Login onLogin={handleLogin} />}
           />
           <Route
             path="/register"
-            element={
-              user ? (
-                <Navigate to="/" />
-              ) : (
-                <Register onLogin={handleLogin} />
-              )
-            }
+            element={user ? <Navigate to="/" /> : <Register onLogin={handleLogin} />}
           />
           <Route path="/pitches" element={<PitchList user={user} />} />
-          <Route path="/pitches/:id" element={<PitchDetail user={user} refreshUser={refreshUser} />} />
+          <Route
+            path="/pitches/:id"
+            element={<PitchDetail user={user} refreshUser={refreshUser} />}
+          />
           <Route
             path="/pitches/new"
-            element={
-              user ? <PitchForm user={user} /> : <Navigate to="/login" />
-            }
+            element={user ? <PitchForm user={user} /> : <Navigate to="/login" />}
           />
           <Route
             path="/pitches/:id/edit"
-            element={
-              user ? <PitchForm user={user} /> : <Navigate to="/login" />
-            }
+            element={user ? <PitchForm user={user} /> : <Navigate to="/login" />}
           />
           <Route
             path="/portfolio"
             element={
-              user ? <Portfolio user={user} refreshUser={refreshUser} /> : <Navigate to="/login" />
+              user ? (
+                <Portfolio user={user} refreshUser={refreshUser} />
+              ) : (
+                <Navigate to="/login" />
+              )
             }
           />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route
             path="/profile"
             element={
-              user ? (
-                <Profile user={user} setUser={setUser} />
-              ) : (
-                <Navigate to="/login" />
-              )
+              user ? <Profile user={user} setUser={setUser} /> : <Navigate to="/login" />
             }
           />
           <Route path="/users/:id" element={<UserProfile />} />

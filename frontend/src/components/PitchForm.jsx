@@ -52,8 +52,7 @@ function PitchForm() {
           marketing: pitch.budgetBreakdown?.marketing?.toString() || "",
           operations: pitch.budgetBreakdown?.operations?.toString() || "",
           talent: pitch.budgetBreakdown?.talent?.toString() || "",
-          miscellaneous:
-            pitch.budgetBreakdown?.miscellaneous?.toString() || "",
+          miscellaneous: pitch.budgetBreakdown?.miscellaneous?.toString() || "",
         });
       });
     }
@@ -73,8 +72,7 @@ function PitchForm() {
     if (form.marketing) budgetBreakdown.marketing = parseInt(form.marketing);
     if (form.operations) budgetBreakdown.operations = parseInt(form.operations);
     if (form.talent) budgetBreakdown.talent = parseInt(form.talent);
-    if (form.miscellaneous)
-      budgetBreakdown.miscellaneous = parseInt(form.miscellaneous);
+    if (form.miscellaneous) budgetBreakdown.miscellaneous = parseInt(form.miscellaneous);
 
     const body = {
       name: form.name,
@@ -238,16 +236,8 @@ function PitchForm() {
             </div>
 
             <div style={{ display: "flex", gap: "12px" }}>
-              <button
-                type="submit"
-                className="btn btn-primary"
-                disabled={loading}
-              >
-                {loading
-                  ? "Saving..."
-                  : isEdit
-                  ? "Update Pitch"
-                  : "Create Pitch"}
+              <button type="submit" className="btn btn-primary" disabled={loading}>
+                {loading ? "Saving..." : isEdit ? "Update Pitch" : "Create Pitch"}
               </button>
               <button
                 type="button"

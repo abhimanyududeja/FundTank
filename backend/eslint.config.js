@@ -1,20 +1,49 @@
+import globals from "globals";
 import js from "@eslint/js";
-
+import eslintConfigPrettier from "eslint-config-prettier";
+import prettier from "eslint-plugin-prettier";
 export default [
-  js.configs.recommended,
   {
+    files: ["**/*.{js,jsx,mjs,cjs,ts,tsx}"],
     languageOptions: {
-      ecmaVersion: 2022,
+      ecmaVersion: "latest",
       sourceType: "module",
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
       globals: {
-        console: "readonly",
-        process: "readonly",
-        Buffer: "readonly",
+        ...globals.browser,
+        ...globals.node,
+        ...globals.es2025,
       },
     },
+    plugins: {
+      prettier: prettier,
+    },
     rules: {
-      "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
-      "no-console": "off",
+      ...js.configs.recommended.rules,
+      indent: [
+        "error",
+        2,
+        {
+          SwitchCase: 1,
+        },
+      ],
+      "linebreak-style": ["error", "unix"],
+      quotes: ["error", "double"],
+      semi: ["error", "always"],
+      "no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
+      "prettier/prettier": [
+        "error",
+        {
+          endOfLine: "lf",
+          trailingComma: "es5",
+          singleQuote: false,
+        },
+      ],
     },
   },
+  eslintConfigPrettier,
 ];

@@ -40,9 +40,7 @@ router.post("/", authMiddleware, async (req, res) => {
     }
 
     // Verify pitch exists
-    const pitch = await db
-      .collection("pitches")
-      .findOne({ _id: new ObjectId(pitchId) });
+    const pitch = await db.collection("pitches").findOne({ _id: new ObjectId(pitchId) });
     if (!pitch) {
       return res.status(404).json({ error: "Pitch not found" });
     }
@@ -90,10 +88,12 @@ router.put("/:id", authMiddleware, async (req, res) => {
       return res.status(400).json({ error: "Text is required" });
     }
 
-    await db.collection("comments").updateOne(
-      { _id: new ObjectId(req.params.id) },
-      { $set: { text: text.trim(), updatedAt: new Date() } }
-    );
+    await db
+      .collection("comments")
+      .updateOne(
+        { _id: new ObjectId(req.params.id) },
+        { $set: { text: text.trim(), updatedAt: new Date() } }
+      );
 
     const updated = await db
       .collection("comments")
@@ -123,14 +123,10 @@ router.delete("/:id", authMiddleware, async (req, res) => {
       return res.status(403).json({ error: "Not authorized" });
     }
 
-    await db
-      .collection("comments")
-      .deleteOne({ _id: new ObjectId(req.params.id) });
+    await db.collection("comments").deleteOne({ _id: new ObjectId(req.params.id) });
 
     // Also delete replies to this comment
-    await db
-      .collection("comments")
-      .deleteMany({ parentId: new ObjectId(req.params.id) });
+    await db.collection("comments").deleteMany({ parentId: new ObjectId(req.params.id) });
 
     res.json({ message: "Comment deleted" });
   } catch (error) {

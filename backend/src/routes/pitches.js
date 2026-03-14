@@ -177,9 +177,7 @@ router.delete("/:id", authMiddleware, async (req, res) => {
       return res.status(403).json({ error: "Not authorized" });
     }
 
-    await db
-      .collection("pitches")
-      .deleteOne({ _id: new ObjectId(req.params.id) });
+    await db.collection("pitches").deleteOne({ _id: new ObjectId(req.params.id) });
 
     // Also remove related investments
     await db
@@ -211,9 +209,7 @@ router.post("/:id/vote", authMiddleware, async (req, res) => {
     if (!pitch) return res.status(404).json({ error: "Pitch not found" });
 
     const userId = req.user.userId.toString();
-    const alreadyVoted = pitch.voters.some(
-      (v) => v.userId.toString() === userId
-    );
+    const alreadyVoted = pitch.voters.some((v) => v.userId.toString() === userId);
     if (alreadyVoted) {
       return res.status(409).json({ error: "Already voted on this pitch" });
     }

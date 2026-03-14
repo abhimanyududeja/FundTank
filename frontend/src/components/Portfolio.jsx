@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import api from "../api.js";
 import "../styles/Portfolio.css";
 
-function Portfolio({ user, refreshUser }) {
+function Portfolio({ user: _user, refreshUser }) {
   const [investments, setInvestments] = useState([]);
   const [analytics, setAnalytics] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -133,10 +133,7 @@ function Portfolio({ user, refreshUser }) {
               <div
                 className="portfolio-stat-value"
                 style={{
-                  color:
-                    analytics.roi > 0
-                      ? "var(--accent-green)"
-                      : "var(--accent-red)",
+                  color: analytics.roi > 0 ? "var(--accent-green)" : "var(--accent-red)",
                 }}
               >
                 {analytics.roi}%
@@ -152,35 +149,26 @@ function Portfolio({ user, refreshUser }) {
               className="card portfolio-chart fade-in"
               style={{ animationDelay: "0.2s" }}
             >
-              <h3 className="pitch-section-title">
-                Investment by Category
-              </h3>
+              <h3 className="pitch-section-title">Investment by Category</h3>
               <div className="chart-bars">
-                {Object.entries(analytics.categoryBreakdown).map(
-                  ([cat, amount]) => (
-                    <div className="chart-bar-group" key={cat}>
-                      <div className="chart-bar-value">
-                        ${(amount / 1000).toFixed(1)}K
-                      </div>
-                      <div
-                        className="chart-bar"
-                        style={{
-                          height: `${Math.max((amount / maxBarValue) * 100, 8)}%`,
-                        }}
-                        title={`${cat}: $${amount.toLocaleString()}`}
-                      />
-                      <span className="chart-bar-label">{cat}</span>
-                    </div>
-                  )
-                )}
+                {Object.entries(analytics.categoryBreakdown).map(([cat, amount]) => (
+                  <div className="chart-bar-group" key={cat}>
+                    <div className="chart-bar-value">${(amount / 1000).toFixed(1)}K</div>
+                    <div
+                      className="chart-bar"
+                      style={{
+                        height: `${Math.max((amount / maxBarValue) * 100, 8)}%`,
+                      }}
+                      title={`${cat}: $${amount.toLocaleString()}`}
+                    />
+                    <span className="chart-bar-label">{cat}</span>
+                  </div>
+                ))}
               </div>
             </div>
           )}
 
-        <h3
-          className="pitch-section-title"
-          style={{ marginBottom: "16px" }}
-        >
+        <h3 className="pitch-section-title" style={{ marginBottom: "16px" }}>
           Your Investments ({investments.length})
         </h3>
 
@@ -199,19 +187,13 @@ function Portfolio({ user, refreshUser }) {
             {investments.map((inv) => (
               <div className="card investment-item fade-in" key={inv._id}>
                 <div className="investment-info">
-                  <Link
-                    to={`/pitches/${inv.pitchId}`}
-                    className="investment-name"
-                  >
+                  <Link to={`/pitches/${inv.pitchId}`} className="investment-name">
                     {inv.pitchName || inv.pitch?.name || "Unknown Pitch"}
                   </Link>
                   <div className="investment-meta">
                     {inv.notes && <span>{inv.notes}</span>}
                     {!inv.notes && (
-                      <span>
-                        Invested{" "}
-                        {new Date(inv.createdAt).toLocaleDateString()}
-                      </span>
+                      <span>Invested {new Date(inv.createdAt).toLocaleDateString()}</span>
                     )}
                   </div>
                 </div>
@@ -289,16 +271,10 @@ function Portfolio({ user, refreshUser }) {
             <h3>Confirm Withdrawal</h3>
             <p>{confirmModal.message}</p>
             <div className="modal-actions">
-              <button
-                className="btn btn-danger"
-                onClick={confirmModal.onConfirm}
-              >
+              <button className="btn btn-danger" onClick={confirmModal.onConfirm}>
                 Withdraw
               </button>
-              <button
-                className="btn btn-ghost"
-                onClick={() => setConfirmModal(null)}
-              >
+              <button className="btn btn-ghost" onClick={() => setConfirmModal(null)}>
                 Cancel
               </button>
             </div>

@@ -24,16 +24,12 @@ function PitchDetail({ user, refreshUser }) {
       .finally(() => setLoading(false));
   }, [id, navigate]);
 
-  const isAuthor =
-    user && pitch && user._id === pitch.authorId.toString();
+  const isAuthor = user && pitch && user._id === pitch.authorId.toString();
   const hasVoted =
-    user &&
-    pitch &&
-    pitch.voters.some((v) => v.userId.toString() === user._id);
-  const userVote =
-    hasVoted
-      ? pitch.voters.find((v) => v.userId.toString() === user._id)?.vote
-      : null;
+    user && pitch && pitch.voters.some((v) => v.userId.toString() === user._id);
+  const userVote = hasVoted
+    ? pitch.voters.find((v) => v.userId.toString() === user._id)?.vote
+    : null;
 
   async function handleVote(vote) {
     if (!user) return navigate("/login");
@@ -91,15 +87,10 @@ function PitchDetail({ user, refreshUser }) {
 
   if (!pitch) return null;
 
-  const progress = Math.min(
-    (pitch.totalFunding / pitch.fundingGoal) * 100,
-    100
-  );
+  const progress = Math.min((pitch.totalFunding / pitch.fundingGoal) * 100, 100);
   const fundRatio =
     pitch.fundVotes + pitch.passVotes > 0
-      ? ((pitch.fundVotes / (pitch.fundVotes + pitch.passVotes)) * 100).toFixed(
-          0
-        )
+      ? ((pitch.fundVotes / (pitch.fundVotes + pitch.passVotes)) * 100).toFixed(0)
       : 50;
 
   return (
@@ -116,10 +107,7 @@ function PitchDetail({ user, refreshUser }) {
             )}
             <div className="pitch-detail-meta">
               <span>
-                by{" "}
-                <Link to={`/users/${pitch.authorId}`}>
-                  {pitch.authorName}
-                </Link>
+                by <Link to={`/users/${pitch.authorId}`}>{pitch.authorName}</Link>
               </span>
               <span>
                 {new Date(pitch.createdAt).toLocaleDateString("en-US", {
@@ -153,22 +141,22 @@ function PitchDetail({ user, refreshUser }) {
               <p className="pitch-description">{pitch.description}</p>
             </div>
 
-            {pitch.budgetBreakdown &&
-              Object.keys(pitch.budgetBreakdown).length > 0 && (
-                <div className="card fade-in" style={{ animationDelay: "0.1s" }}>
-                  <h3 className="pitch-section-title">Budget Breakdown</h3>
-                  {Object.entries(pitch.budgetBreakdown).map(([key, val]) => (
-                    <div className="budget-item" key={key}>
-                      <span className="budget-item-label">{key}</span>
-                      <span className="budget-item-value">
-                        ${val.toLocaleString()}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              )}
+            {pitch.budgetBreakdown && Object.keys(pitch.budgetBreakdown).length > 0 && (
+              <div className="card fade-in" style={{ animationDelay: "0.1s" }}>
+                <h3 className="pitch-section-title">Budget Breakdown</h3>
+                {Object.entries(pitch.budgetBreakdown).map(([key, val]) => (
+                  <div className="budget-item" key={key}>
+                    <span className="budget-item-label">{key}</span>
+                    <span className="budget-item-value">${val.toLocaleString()}</span>
+                  </div>
+                ))}
+              </div>
+            )}
 
-            <div className="card fade-in" style={{ marginTop: "20px", animationDelay: "0.2s" }}>
+            <div
+              className="card fade-in"
+              style={{ marginTop: "20px", animationDelay: "0.2s" }}
+            >
               <Comments pitchId={id} user={user} />
             </div>
           </div>
@@ -200,10 +188,7 @@ function PitchDetail({ user, refreshUser }) {
               </div>
               <div style={{ marginTop: "12px" }}>
                 <div className="progress-bar">
-                  <div
-                    className="progress-fill"
-                    style={{ width: `${progress}%` }}
-                  />
+                  <div className="progress-fill" style={{ width: `${progress}%` }} />
                 </div>
               </div>
               <div className="sidebar-stat">
@@ -257,9 +242,7 @@ function PitchDetail({ user, refreshUser }) {
                         ? "var(--accent-green-dim)"
                         : "rgba(248, 113, 113, 0.1)",
                     color:
-                      userVote === "fund"
-                        ? "var(--accent-green)"
-                        : "var(--accent-red)",
+                      userVote === "fund" ? "var(--accent-green)" : "var(--accent-red)",
                     width: "100%",
                   }}
                 >
@@ -269,14 +252,9 @@ function PitchDetail({ user, refreshUser }) {
             </div>
 
             {user && !isAuthor && (
-              <div
-                className="card fade-in"
-                style={{ animationDelay: "0.2s" }}
-              >
+              <div className="card fade-in" style={{ animationDelay: "0.2s" }}>
                 <h3 className="pitch-section-title">Invest in {pitch.name}</h3>
-                {investError && (
-                  <div className="form-error">{investError}</div>
-                )}
+                {investError && <div className="form-error">{investError}</div>}
                 <form className="invest-form" onSubmit={handleInvest}>
                   <div className="form-group">
                     <label htmlFor="invest-amount">Amount ($)</label>

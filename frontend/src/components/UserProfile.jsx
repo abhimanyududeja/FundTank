@@ -63,8 +63,8 @@ function UserProfile() {
                     profile.riskPreference === "aggressive"
                       ? "badge-pink"
                       : profile.riskPreference === "moderate"
-                      ? "badge-amber"
-                      : "badge-green"
+                        ? "badge-amber"
+                        : "badge-green"
                   }`}
                 >
                   {profile.riskPreference}
@@ -77,13 +77,19 @@ function UserProfile() {
             <div>
               <div className="sidebar-stat">
                 <span className="sidebar-stat-label">Total Invested</span>
-                <span className="sidebar-stat-value" style={{ color: "var(--accent-pink)" }}>
+                <span
+                  className="sidebar-stat-value"
+                  style={{ color: "var(--accent-pink)" }}
+                >
                   ${profile.totalInvested.toLocaleString()}
                 </span>
               </div>
               <div className="sidebar-stat">
                 <span className="sidebar-stat-label">Total Returns</span>
-                <span className="sidebar-stat-value" style={{ color: "var(--accent-green)" }}>
+                <span
+                  className="sidebar-stat-value"
+                  style={{ color: "var(--accent-green)" }}
+                >
                   ${profile.totalReturns.toLocaleString()}
                 </span>
               </div>
@@ -91,9 +97,7 @@ function UserProfile() {
             <div>
               <div className="sidebar-stat">
                 <span className="sidebar-stat-label">Successful Picks</span>
-                <span className="sidebar-stat-value">
-                  {profile.successfulPicks}
-                </span>
+                <span className="sidebar-stat-value">{profile.successfulPicks}</span>
               </div>
               <div className="sidebar-stat">
                 <span className="sidebar-stat-label">Member Since</span>
@@ -112,9 +116,7 @@ function UserProfile() {
               >
                 Investment Strategy
               </div>
-              <p style={{ color: "var(--text-secondary)" }}>
-                {profile.strategy}
-              </p>
+              <p style={{ color: "var(--text-secondary)" }}>{profile.strategy}</p>
             </div>
           )}
         </div>
@@ -128,20 +130,16 @@ function UserProfile() {
             {investments.map((inv) => (
               <div className="card investment-item fade-in" key={inv._id}>
                 <div className="investment-info">
-                  <Link
-                    to={`/pitches/${inv.pitchId}`}
-                    className="investment-name"
-                  >
+                  <Link to={`/pitches/${inv.pitchId}`} className="investment-name">
                     {inv.pitchName}
                   </Link>
                   <div className="investment-meta">
-                    {inv.notes || `Invested ${new Date(inv.createdAt).toLocaleDateString()}`}
+                    {inv.notes ||
+                      `Invested ${new Date(inv.createdAt).toLocaleDateString()}`}
                   </div>
                 </div>
                 <div className="investment-amounts">
-                  <div className="investment-amount">
-                    ${inv.amount.toLocaleString()}
-                  </div>
+                  <div className="investment-amount">${inv.amount.toLocaleString()}</div>
                   <div className="investment-return">
                     Est: ${inv.estimatedReturn.toLocaleString()}
                   </div>
