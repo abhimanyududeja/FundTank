@@ -1,3 +1,4 @@
+// Author: Kashish Rahulbhai Khatri
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import "../styles/PitchCard.css";

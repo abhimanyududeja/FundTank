@@ -1,3 +1,4 @@
+// Authors: Abhimanyu Dudeja, Kashish Rahulbhai Khatri
 import { Link, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import "../styles/Navbar.css";

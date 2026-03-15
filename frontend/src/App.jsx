@@ -1,3 +1,4 @@
+// Authors: Abhimanyu Dudeja, Kashish Rahulbhai Khatri
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";

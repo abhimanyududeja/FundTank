@@ -1,3 +1,4 @@
+// Author: Kashish Rahulbhai Khatri
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import PitchCard from "./PitchCard.jsx";
