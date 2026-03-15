@@ -81,7 +81,7 @@ The profile page shows a card with an avatar circle (initials), display name, us
 
 ### 4.8 User Profile (Public)
 
-![User Profile](screenshots/userprofile.png)
+![User Profile](screenshots/userprofile1.png)
 
 The public profile page mirrors the own profile layout but without edit capabilities. It shows the investor's avatar, display name, username, risk badge, stats (Total Invested, Total Returns, Successful Picks, Member Since), and strategy text. Below is a list of their public portfolio investments showing pitch name, notes/date, amount, and estimated return for each investment.
 
