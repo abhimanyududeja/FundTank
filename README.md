@@ -2,7 +2,7 @@
 
 A startup simulation platform where users roleplay as entrepreneurs and investors in a fictional startup ecosystem. Pitch your startup ideas, allocate virtual capital, vote on ventures, and compete on leaderboards. Think Shark Tank meets a stock market game.
 
-![FundTank Screenshot](screenshot.png)
+![FundTank Screenshot](screenshots/screenshot.png)
 
 ## Authors
 
