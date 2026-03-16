@@ -1,6 +1,6 @@
 # FundTank — Design Document
 
-> **Course:** CS5610 Web Development · Northeastern University · Spring 2026
+> **Course:** CS5610 Web Development  Northeastern University  Spring 2026
 > **Authors:** Abhimanyu Dudeja & Kashish Rahulbhai Khatri
 
 ---
@@ -49,7 +49,7 @@ FundTank solves this by providing:
 
 ### Supported Categories
 
-FinTech · HealthTech · EdTech · GreenTech · AI/ML · SaaS · E-Commerce · Social Media · Gaming · FoodTech · Logistics · Real Estate
+FinTech  HealthTech  EdTech  GreenTech  AI/ML  SaaS  E-Commerce  Social Media  Gaming  FoodTech  Logistics  Real Estate
 
 ### Tech Stack
 
@@ -70,8 +70,8 @@ FinTech · HealthTech · EdTech · GreenTech · AI/ML · SaaS · E-Commerce · S
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  👤  RAJ KAPOOR                                              │
-│      Age 23 · CS Graduate Student · Boston, MA               │
+│  RAJ KAPOOR                                              │
+│      Age 23  CS Graduate Student  Boston, MA               │
 ├─────────────────────────────────────────────────────────────┤
 │  BACKGROUND                                                  │
 │  • Has creative business ideas but no platform to test them │
@@ -97,8 +97,8 @@ FinTech · HealthTech · EdTech · GreenTech · AI/ML · SaaS · E-Commerce · S
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  👤  LENA PARK                                               │
-│      Age 25 · MBA Student · Cambridge, MA                    │
+│  LENA PARK                                               │
+│      Age 25  MBA Student  Cambridge, MA                    │
 ├─────────────────────────────────────────────────────────────┤
 │  BACKGROUND                                                  │
 │  • Loves analyzing business models and market trends        │
@@ -125,8 +125,8 @@ FinTech · HealthTech · EdTech · GreenTech · AI/ML · SaaS · E-Commerce · S
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  👤  SAM TAYLOR                                              │
-│      Age 21 · Undergrad · Somerville, MA                     │
+│  SAM TAYLOR                                              │
+│      Age 21  Undergrad  Somerville, MA                     │
 ├─────────────────────────────────────────────────────────────┤
 │  BACKGROUND                                                  │
 │  • Enjoys scrolling through creative content                │
@@ -151,7 +151,7 @@ FinTech · HealthTech · EdTech · GreenTech · AI/ML · SaaS · E-Commerce · S
 
 ## 3. User Stories
 
-### 🚀 Startup Pitches & Voting _(Kashish Rahulbhai Khatri)_
+### Startup Pitches & Voting _(Kashish Rahulbhai Khatri)_
 
 ---
 
@@ -193,7 +193,7 @@ FinTech · HealthTech · EdTech · GreenTech · AI/ML · SaaS · E-Commerce · S
 
 ---
 
-### 💰 Investment Portfolio & Analytics _(Abhimanyu Dudeja)_
+### Investment Portfolio & Analytics _(Abhimanyu Dudeja)_
 
 ---
 
@@ -285,7 +285,7 @@ FinTech · HealthTech · EdTech · GreenTech · AI/ML · SaaS · E-Commerce · S
 │  Browse Startups                                                    │
 │  200 pitches in the tank                                           │
 │                                                                     │
-│  [🔍 Search pitches...  ] [All Categories ▾] [Newest ▾]           │
+│  [Search pitches...  ] [All Categories ▾] [Newest ▾]           │
 │                                                                     │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐             │
 │  │ SOCIAL MEDIA │  │ HEALTHTECH   │  │ GREENTECH    │             │
@@ -320,7 +320,7 @@ FinTech · HealthTech · EdTech · GreenTech · AI/ML · SaaS · E-Commerce · S
 │  FINTECH                                          [ Edit ] [Delete]│
 │  PayBridge 2                                                       │
 │  Fresh. Local. Connected.                                          │
-│  by Casey Thompson · Jan 30, 2026                                  │
+│  by Casey Thompson  Jan 30, 2026                                  │
 │                                                                     │
 │  ┌─────────────────────────┐  ┌──────────────────────┐            │
 │  │ About this Startup      │  │ Funding Stats        │            │
@@ -443,7 +443,7 @@ FinTech · HealthTech · EdTech · GreenTech · AI/ML · SaaS · E-Commerce · S
 │  Leaderboard                                                       │
 │  Top startups and investors in the tank                            │
 │                                                                     │
-│  [ Top Startups ✓ ]  [ Top Investors ]                             │
+│  [ Top Startups active ]  [ Top Investors ]                             │
 │                                                                     │
 │  ┌─────────────────────────────────────────────────────────┐      │
 │  │ Rank  Startup      Category   Funding   Votes  Approval │      │
@@ -530,20 +530,20 @@ FinTech · HealthTech · EdTech · GreenTech · AI/ML · SaaS · E-Commerce · S
 ```
 ┌──────────────────────────────────────────────────────────────┐
 │                    CLIENT — React 18 SPA                      │
-│  React Router v6 · Hooks · Fetch API · JWT localStorage      │
-│  13 components · PropTypes · CSS modules · Vite build         │
+│  React Router v6  Hooks  Fetch API  JWT localStorage      │
+│  13 components  PropTypes  CSS modules  Vite build         │
 └──────────────────────────┬───────────────────────────────────┘
                            │  REST API / JSON over HTTP
 ┌──────────────────────────▼───────────────────────────────────┐
 │                  SERVER — Node.js + Express                   │
-│  /api/auth · /api/pitches · /api/investments · /api/users    │
-│  /api/comments · JWT Middleware · Manual CORS · Static Serve │
+│  /api/auth  /api/pitches  /api/investments  /api/users    │
+│  /api/comments  JWT Middleware  Manual CORS  Static Serve │
 └──────────────────────────┬───────────────────────────────────┘
                            │  MongoDB Native Driver (no Mongoose)
 ┌──────────────────────────▼───────────────────────────────────┐
 │                  DATABASE — MongoDB Atlas                     │
-│  users · pitches · investments · comments (4 collections)    │
-│  50 users · 200 pitches · 800 investments · 231 comments     │
+│  users  pitches  investments  comments (4 collections)    │
+│  50 users  200 pitches  800 investments  231 comments     │
 │  1,281 total seeded records                                  │
 └──────────────────────────────────────────────────────────────┘
 ```
@@ -625,7 +625,7 @@ FinTech · HealthTech · EdTech · GreenTech · AI/ML · SaaS · E-Commerce · S
 | ------ | -------------------- | ------ | ------------------------------ |
 | POST   | `/api/auth/register` | —      | Register new user, returns JWT |
 | POST   | `/api/auth/login`    | —      | Login, returns JWT + user      |
-| GET    | `/api/auth/me`       | ✅ JWT | Get current user from token    |
+| GET    | `/api/auth/me`       | JWT | Get current user from token    |
 
 ### Pitches _(Kashish Rahulbhai Khatri)_
 
@@ -634,21 +634,21 @@ FinTech · HealthTech · EdTech · GreenTech · AI/ML · SaaS · E-Commerce · S
 | GET    | `/api/pitches`          | Optional | Browse with filters, search, pagination  |
 | GET    | `/api/pitches/leaderboard` | —     | Top 20 by funding                        |
 | GET    | `/api/pitches/:id`      | Optional | Pitch detail                             |
-| POST   | `/api/pitches`          | ✅ JWT   | Create pitch                             |
-| PUT    | `/api/pitches/:id`      | ✅ Owner | Edit pitch                               |
-| DELETE | `/api/pitches/:id`      | ✅ Owner | Delete pitch                             |
-| POST   | `/api/pitches/:id/vote` | ✅ JWT   | Vote fund or pass                        |
+| POST   | `/api/pitches`          | JWT   | Create pitch                             |
+| PUT    | `/api/pitches/:id`      | Owner | Edit pitch                               |
+| DELETE | `/api/pitches/:id`      | Owner | Delete pitch                             |
+| POST   | `/api/pitches/:id/vote` | JWT   | Vote fund or pass                        |
 
 ### Investments _(Abhimanyu Dudeja)_
 
 | Method | Endpoint                          | Auth     | Description                    |
 | ------ | --------------------------------- | -------- | ------------------------------ |
-| GET    | `/api/investments`                | ✅ JWT   | Current user's portfolio       |
+| GET    | `/api/investments`                | JWT   | Current user's portfolio       |
 | GET    | `/api/investments/user/:userId`   | —        | Any user's investments         |
-| GET    | `/api/investments/analytics/summary` | ✅ JWT | Portfolio analytics            |
-| POST   | `/api/investments`                | ✅ JWT   | Invest in a startup            |
-| PUT    | `/api/investments/:id`            | ✅ Owner | Update investment              |
-| DELETE | `/api/investments/:id`            | ✅ Owner | Withdraw investment            |
+| GET    | `/api/investments/analytics/summary` | JWT | Portfolio analytics            |
+| POST   | `/api/investments`                | JWT   | Invest in a startup            |
+| PUT    | `/api/investments/:id`            | Owner | Update investment              |
+| DELETE | `/api/investments/:id`            | Owner | Withdraw investment            |
 
 ### Users
 
@@ -656,18 +656,18 @@ FinTech · HealthTech · EdTech · GreenTech · AI/ML · SaaS · E-Commerce · S
 | ------ | ----------------------- | -------- | ------------------------------ |
 | GET    | `/api/users/leaderboard`| —        | Top 20 investors by returns    |
 | GET    | `/api/users/:id`        | —        | Public profile                 |
-| PUT    | `/api/users/profile`    | ✅ JWT   | Update own profile             |
+| PUT    | `/api/users/profile`    | JWT   | Update own profile             |
 
 ### Comments _(Abhimanyu Dudeja)_
 
 | Method | Endpoint                       | Auth   | Description                    |
 | ------ | ------------------------------ | ------ | ------------------------------ |
 | GET    | `/api/comments/pitch/:pitchId` | —      | All comments for a pitch       |
-| POST   | `/api/comments`                | ✅ JWT | Create comment or reply        |
-| PUT    | `/api/comments/:id`            | ✅ Owner | Edit own comment             |
-| DELETE | `/api/comments/:id`            | ✅ Owner | Delete own comment + replies |
+| POST   | `/api/comments`                | JWT | Create comment or reply        |
+| PUT    | `/api/comments/:id`            | Owner | Edit own comment             |
+| DELETE | `/api/comments/:id`            | Owner | Delete own comment + replies |
 
 ---
 
-_FundTank Design Document · CS5610 Web Development · Northeastern University · Spring 2026_
+_FundTank Design Document  CS5610 Web Development  Northeastern University  Spring 2026_
 _Authors: Abhimanyu Dudeja & Kashish Rahulbhai Khatri_
