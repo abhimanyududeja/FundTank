@@ -6,7 +6,7 @@ import { ObjectId } from "mongodb";
 import { getDB } from "../db/connection.js";
 
 const router = Router();
-const JWT_SECRET = process.env.JWT_SECRET || "fundtank_secret_key_2026";
+const JWT_SECRET = process.env.JWT_SECRET;
 const STARTING_BUDGET = 100000;
 
 // POST /api/auth/register

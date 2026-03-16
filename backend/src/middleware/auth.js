@@ -1,7 +1,7 @@
 // Authors: Abhimanyu Dudeja, Kashish Rahulbhai Khatri
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || "fundtank_secret_key_2026";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 function authMiddleware(req, res, next) {
   const authHeader = req.headers.authorization;
