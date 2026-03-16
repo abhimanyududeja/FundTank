@@ -58,6 +58,45 @@ router.get("/user/:userId", async (req, res) => {
   }
 });
 
+// GET /api/investments/analytics/summary - Portfolio analytics for current user
+router.get("/analytics/summary", authMiddleware, async (req, res) => {
+  try {
+    const db = getDB();
+    const investments = await db
+      .collection("investments")
+      .find({ investorId: new ObjectId(req.user.userId) })
+      .toArray();
+
+    const totalInvested = investments.reduce((sum, i) => sum + i.amount, 0);
+    const totalEstimatedReturns = investments.reduce(
+      (sum, i) => sum + i.estimatedReturn,
+      0
+    );
+    const categoryBreakdown = {};
+    for (const inv of investments) {
+      const pitch = await db.collection("pitches").findOne({ _id: inv.pitchId });
+      if (pitch) {
+        const cat = pitch.category || "Other";
+        categoryBreakdown[cat] = (categoryBreakdown[cat] || 0) + inv.amount;
+      }
+    }
+
+    res.json({
+      totalInvestments: investments.length,
+      totalInvested,
+      totalEstimatedReturns,
+      roi:
+        totalInvested > 0
+          ? (((totalEstimatedReturns - totalInvested) / totalInvested) * 100).toFixed(2)
+          : 0,
+      categoryBreakdown,
+    });
+  } catch (error) {
+    console.error("Analytics error:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
 // GET /api/investments/:id - Get single investment
 router.get("/:id", async (req, res) => {
   try {
@@ -263,45 +302,6 @@ router.delete("/:id", authMiddleware, async (req, res) => {
     res.json({ message: "Investment withdrawn successfully" });
   } catch (error) {
     console.error("Delete investment error:", error);
-    res.status(500).json({ error: "Server error" });
-  }
-});
-
-// GET /api/investments/analytics/summary - Portfolio analytics for current user
-router.get("/analytics/summary", authMiddleware, async (req, res) => {
-  try {
-    const db = getDB();
-    const investments = await db
-      .collection("investments")
-      .find({ investorId: new ObjectId(req.user.userId) })
-      .toArray();
-
-    const totalInvested = investments.reduce((sum, i) => sum + i.amount, 0);
-    const totalEstimatedReturns = investments.reduce(
-      (sum, i) => sum + i.estimatedReturn,
-      0
-    );
-    const categoryBreakdown = {};
-    for (const inv of investments) {
-      const pitch = await db.collection("pitches").findOne({ _id: inv.pitchId });
-      if (pitch) {
-        const cat = pitch.category || "Other";
-        categoryBreakdown[cat] = (categoryBreakdown[cat] || 0) + inv.amount;
-      }
-    }
-
-    res.json({
-      totalInvestments: investments.length,
-      totalInvested,
-      totalEstimatedReturns,
-      roi:
-        totalInvested > 0
-          ? (((totalEstimatedReturns - totalInvested) / totalInvested) * 100).toFixed(2)
-          : 0,
-      categoryBreakdown,
-    });
-  } catch (error) {
-    console.error("Analytics error:", error);
     res.status(500).json({ error: "Server error" });
   }
 });
