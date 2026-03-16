@@ -60,10 +60,6 @@ Demo video: [YouTube Link](https://youtube.com)
 - **Color Palette:** Dark theme with a deep navy background (#0a0e1a), cyan (#22d3ee) as primary accent, pink (#f472b6) for secondary highlights, green (#34d399) for positive/success states, amber (#fbbf24) for warnings, and red (#f87171) for destructive/cancel actions. Approval and cancel colors are consistent across the entire app.
 - **Layout:** Top left hierarchy with the brand logo and navigation. Hero section draws attention first, followed by stats and featured pitches. Cards use consistent border radius, padding, and hover states throughout.
 
-## Screenshots
-
-> Add screenshots of the Home page, Pitch List, Pitch Detail, Portfolio, Leaderboard, and Profile pages before submission.
-
 ## Instructions to Build
 
 ### Prerequisites
@@ -212,7 +208,7 @@ fundtank/
 │   ├── .prettierrc
 │   ├── .env.example
 │   └── package.json
-├── designdoc.md
+├── DESIGN.md
 ├── README.md
 └── LICENSE
 ```
