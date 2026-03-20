@@ -154,7 +154,28 @@ Total synthetic records seeded: **1200+**
 
 ## Project Structure
 
-```
+<!-- There is a better way to organize the folders and files on the Frontend. YOu components folder currently mixes reusable UI with route level screens. This separation would make the project easier to scale and easier for other developers to navigate. -->
+
+<!-- src/
+  components/
+    Navbar.jsx
+    PitchCard.jsx
+    Comments.jsx
+
+  pages/
+    Home.jsx
+    Leaderboard.jsx
+    Login.jsx
+    Register.jsx
+    PitchList.jsx
+    PitchDetail.jsx
+    PitchForm.jsx
+    Portfolio.jsx
+    Profile.jsx
+    UserProfile.jsx
+--->
+
+----
 fundtank/
 ├── frontend/
 │   ├── public/
