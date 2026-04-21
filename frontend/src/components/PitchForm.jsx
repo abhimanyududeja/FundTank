@@ -66,7 +66,6 @@ function PitchForm() {
   async function handleSubmit(e) {
     e.preventDefault();
     setError("");
-    setLoading(true);
 
     const budgetBreakdown = {};
     if (form.engineering) budgetBreakdown.engineering = parseInt(form.engineering);
@@ -74,6 +73,16 @@ function PitchForm() {
     if (form.operations) budgetBreakdown.operations = parseInt(form.operations);
     if (form.talent) budgetBreakdown.talent = parseInt(form.talent);
     if (form.miscellaneous) budgetBreakdown.miscellaneous = parseInt(form.miscellaneous);
+
+    // Validate budget total matches funding goal
+    const budgetTotal = Object.values(budgetBreakdown).reduce((sum, v) => sum + v, 0);
+    const goal = parseInt(form.fundingGoal) || 0;
+    if (budgetTotal > 0 && budgetTotal !== goal) {
+      setError(`Budget total ($${budgetTotal.toLocaleString()}) does not match your funding goal ($${goal.toLocaleString()}). Please adjust your numbers.`);
+      return;
+    }
+
+    setLoading(true);
 
     const body = {
       name: form.name,
