@@ -56,12 +56,23 @@ a:hover {
   color: var(--accent-pink);
 }
 
+a:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 button {
   font-family: var(--font-body);
   cursor: pointer;
   border: none;
   outline: none;
   transition: all var(--transition);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
 }
 
 input,
@@ -81,7 +92,8 @@ select {
 input:focus,
 textarea:focus,
 select:focus {
-  outline: none;
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 1px;
   border-color: var(--accent-cyan);
 }
 
@@ -126,6 +138,11 @@ textarea::placeholder {
   font-size: 0.9rem;
   letter-spacing: 0.02em;
   transition: all var(--transition);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
 }
 
 .btn-primary {

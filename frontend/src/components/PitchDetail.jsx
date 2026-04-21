@@ -63,7 +63,9 @@ function PitchDetail({ user, refreshUser }) {
       setPitch(updated);
       if (refreshUser) refreshUser();
       // Show success toast
-      setToast(`Investment successful! $${Number(investAmount).toLocaleString()} invested in ${pitch.name}.`);
+      setToast(
+        `Investment successful! $${Number(investAmount).toLocaleString()} invested in ${pitch.name}.`
+      );
       setTimeout(() => setToast(null), 4000);
     } catch (err) {
       setInvestError(err.message);
@@ -235,7 +237,15 @@ function PitchDetail({ user, refreshUser }) {
                   >
                     Pass
                   </button>
-                  <p style={{ fontSize: "0.75rem", color: "var(--text-muted)", textAlign: "center", marginTop: "6px", width: "100%" }}>
+                  <p
+                    style={{
+                      fontSize: "0.75rem",
+                      color: "var(--text-muted)",
+                      textAlign: "center",
+                      marginTop: "6px",
+                      width: "100%",
+                    }}
+                  >
                     This is a community vote. Your budget will not be affected.
                   </p>
                 </div>
@@ -312,13 +322,23 @@ function PitchDetail({ user, refreshUser }) {
       </div>
 
       {toast && (
-        <div style={{
-          position: "fixed", bottom: "24px", left: "50%", transform: "translateX(-50%)",
-          background: "var(--accent-green)", color: "#fff", padding: "14px 28px",
-          borderRadius: "8px", fontSize: "0.95rem", fontWeight: "500",
-          boxShadow: "0 4px 20px rgba(0,0,0,0.3)", zIndex: 1000,
-          animation: "fadeIn 0.3s ease"
-        }}>
+        <div
+          style={{
+            position: "fixed",
+            bottom: "24px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            background: "var(--accent-green)",
+            color: "#fff",
+            padding: "14px 28px",
+            borderRadius: "8px",
+            fontSize: "0.95rem",
+            fontWeight: "500",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+            zIndex: 1000,
+            animation: "fadeIn 0.3s ease",
+          }}
+        >
           {toast}
         </div>
       )}

@@ -78,7 +78,9 @@ function PitchForm() {
     const budgetTotal = Object.values(budgetBreakdown).reduce((sum, v) => sum + v, 0);
     const goal = parseInt(form.fundingGoal) || 0;
     if (budgetTotal > 0 && budgetTotal !== goal) {
-      setError(`Budget total ($${budgetTotal.toLocaleString()}) does not match your funding goal ($${goal.toLocaleString()}). Please adjust your numbers.`);
+      setError(
+        `Budget total ($${budgetTotal.toLocaleString()}) does not match your funding goal ($${goal.toLocaleString()}). Please adjust your numbers.`
+      );
       return;
     }
 
@@ -244,16 +246,30 @@ function PitchForm() {
                 </div>
               </div>
               {(() => {
-                const budgetTotal = (parseInt(form.engineering) || 0) + (parseInt(form.marketing) || 0) + (parseInt(form.operations) || 0) + (parseInt(form.talent) || 0) + (parseInt(form.miscellaneous) || 0);
+                const budgetTotal =
+                  (parseInt(form.engineering) || 0) +
+                  (parseInt(form.marketing) || 0) +
+                  (parseInt(form.operations) || 0) +
+                  (parseInt(form.talent) || 0) +
+                  (parseInt(form.miscellaneous) || 0);
                 const goal = parseInt(form.fundingGoal) || 0;
                 const hasBudgetValues = budgetTotal > 0;
                 const remaining = goal - budgetTotal;
                 const mismatch = hasBudgetValues && goal > 0 && budgetTotal !== goal;
                 const over = remaining < 0;
                 return hasBudgetValues ? (
-                  <div style={{ marginTop: "8px", padding: "10px 14px", borderRadius: "6px", fontSize: "0.85rem",
-                    background: mismatch ? "rgba(248, 113, 113, 0.1)" : "var(--accent-green-dim)",
-                    color: mismatch ? "var(--accent-red)" : "var(--accent-green)" }}>
+                  <div
+                    style={{
+                      marginTop: "8px",
+                      padding: "10px 14px",
+                      borderRadius: "6px",
+                      fontSize: "0.85rem",
+                      background: mismatch
+                        ? "rgba(248, 113, 113, 0.1)"
+                        : "var(--accent-green-dim)",
+                      color: mismatch ? "var(--accent-red)" : "var(--accent-green)",
+                    }}
+                  >
                     <div style={{ display: "flex", justifyContent: "space-between" }}>
                       <span>Budget Total: ${budgetTotal.toLocaleString()}</span>
                       {goal > 0 && <span>Goal: ${goal.toLocaleString()}</span>}
@@ -266,7 +282,9 @@ function PitchForm() {
                       </div>
                     )}
                     {!mismatch && goal > 0 && (
-                      <div style={{ marginTop: "4px", fontWeight: "500" }}>Matches funding goal</div>
+                      <div style={{ marginTop: "4px", fontWeight: "500" }}>
+                        Matches funding goal
+                      </div>
                     )}
                   </div>
                 ) : null;
