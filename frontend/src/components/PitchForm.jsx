@@ -247,14 +247,27 @@ function PitchForm() {
                 const budgetTotal = (parseInt(form.engineering) || 0) + (parseInt(form.marketing) || 0) + (parseInt(form.operations) || 0) + (parseInt(form.talent) || 0) + (parseInt(form.miscellaneous) || 0);
                 const goal = parseInt(form.fundingGoal) || 0;
                 const hasBudgetValues = budgetTotal > 0;
+                const remaining = goal - budgetTotal;
                 const mismatch = hasBudgetValues && goal > 0 && budgetTotal !== goal;
+                const over = remaining < 0;
                 return hasBudgetValues ? (
-                  <div style={{ marginTop: "8px", padding: "8px 12px", borderRadius: "6px", fontSize: "0.85rem",
+                  <div style={{ marginTop: "8px", padding: "10px 14px", borderRadius: "6px", fontSize: "0.85rem",
                     background: mismatch ? "rgba(248, 113, 113, 0.1)" : "var(--accent-green-dim)",
                     color: mismatch ? "var(--accent-red)" : "var(--accent-green)" }}>
-                    Budget Total: ${budgetTotal.toLocaleString()}
-                    {mismatch && ` (does not match funding goal of $${goal.toLocaleString()})`}
-                    {!mismatch && goal > 0 && " -- matches funding goal"}
+                    <div style={{ display: "flex", justifyContent: "space-between" }}>
+                      <span>Budget Total: ${budgetTotal.toLocaleString()}</span>
+                      {goal > 0 && <span>Goal: ${goal.toLocaleString()}</span>}
+                    </div>
+                    {mismatch && goal > 0 && (
+                      <div style={{ marginTop: "4px", fontWeight: "500" }}>
+                        {over
+                          ? `Over by $${Math.abs(remaining).toLocaleString()} -- reduce your allocations`
+                          : `$${remaining.toLocaleString()} remaining to allocate`}
+                      </div>
+                    )}
+                    {!mismatch && goal > 0 && (
+                      <div style={{ marginTop: "4px", fontWeight: "500" }}>Matches funding goal</div>
+                    )}
                   </div>
                 ) : null;
               })()}
