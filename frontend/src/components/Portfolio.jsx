@@ -150,7 +150,7 @@ function Portfolio({ user: _user, refreshUser }) {
               className="card portfolio-chart fade-in"
               style={{ animationDelay: "0.2s" }}
             >
-              <h3 className="pitch-section-title">Investment by Category</h3>
+              <h2 className="pitch-section-title">Investment by Category</h2>
               <div className="chart-bars">
                 {Object.entries(analytics.categoryBreakdown).map(([cat, amount]) => (
                   <div className="chart-bar-group" key={cat}>
@@ -169,9 +169,9 @@ function Portfolio({ user: _user, refreshUser }) {
             </div>
           )}
 
-        <h3 className="pitch-section-title" style={{ marginBottom: "16px" }}>
+        <h2 className="pitch-section-title" style={{ marginBottom: "16px" }}>
           Your Investments ({investments.length})
-        </h3>
+        </h2>
 
         {investments.length === 0 ? (
           <div className="empty-state">
