@@ -51,7 +51,17 @@ function Profile({ user, setUser }) {
           <div className="profile-header">
             <div className="profile-avatar">{initials}</div>
             <div className="profile-info">
-              <h2>{user.displayName}</h2>
+              <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                <h2>{user.displayName}</h2>
+                <button
+                  className="btn btn-ghost btn-sm"
+                  onClick={() => setEditing(!editing)}
+                  title="Edit Profile"
+                  style={{ padding: "4px 10px", fontSize: "0.8rem" }}
+                >
+                  {editing ? "Cancel" : "Edit"}
+                </button>
+              </div>
               <p>@{user.username}</p>
               <div className="profile-badges">
                 <span
@@ -121,13 +131,6 @@ function Profile({ user, setUser }) {
               <p style={{ color: "var(--text-secondary)" }}>{user.strategy}</p>
             </div>
           )}
-
-          <button
-            className="btn btn-secondary btn-sm"
-            onClick={() => setEditing(!editing)}
-          >
-            {editing ? "Cancel" : "Edit Profile"}
-          </button>
         </div>
 
         {editing && (
@@ -154,7 +157,7 @@ function Profile({ user, setUser }) {
                   value={form.strategy}
                   onChange={handleChange}
                   rows={3}
-                  placeholder="Describe your investing approach..."
+                  placeholder="e.g. Focused on high-growth tech startups with strong market potential and scalable business models"
                 />
               </div>
 

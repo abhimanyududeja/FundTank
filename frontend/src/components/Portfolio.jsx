@@ -234,9 +234,14 @@ function Portfolio({ user: _user, refreshUser }) {
                       <div className="investment-amount">
                         ${inv.amount.toLocaleString()}
                       </div>
-                      <div className="investment-return">
-                        Est: ${inv.estimatedReturn.toLocaleString()} (
-                        {inv.returnMultiplier}x)
+                      <div className="investment-return" style={{ position: "relative" }}>
+                        Est: ${inv.estimatedReturn.toLocaleString()}{" "}
+                        <span
+                          title={`Your $${inv.amount.toLocaleString()} investment could return $${inv.estimatedReturn.toLocaleString()}. The ${inv.returnMultiplier}x multiplier is based on the startup's approval rate and funding progress.`}
+                          style={{ cursor: "help", borderBottom: "1px dotted var(--text-muted)" }}
+                        >
+                          ({inv.returnMultiplier}x)
+                        </span>
                       </div>
                     </div>
                     <div className="investment-actions">
