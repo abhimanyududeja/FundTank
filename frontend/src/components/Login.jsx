@@ -82,3 +82,10 @@ Login.propTypes = {
 };
 
 export default Login;
+
+
+/* Make auth forms shareable
+// Login and Register have very similar structure: 
+// local form state, error state, loading state, submit handler, and auth card layout. 
+//   You could extract shared form UI or at least a shared AuthLayout / AuthField to reduce duplication 
+//   and keep styling consistent. */
